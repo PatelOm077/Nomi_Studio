@@ -10,18 +10,19 @@ A five-page, fully animated static website. Plain HTML, CSS and JavaScript — n
 - `contact.html` — Contact (interactive project brief)
 
 ## Run it locally
-Open `index.html` in a browser, or run a tiny server from this folder:
+Open `public/index.html` in a browser, or run a tiny server:
 
-    python -m http.server 8000
+    cd public && python -m http.server 8000
 
 then visit http://localhost:8000
 
-## Go live (free)
-Drag this whole folder into **Netlify Drop** (app.netlify.com/drop), or push it to GitHub and turn on **GitHub Pages** / import it into **Vercel**. Then connect your domain.
+## Deployment
+Hosted on Cloudflare (Workers static assets), connected to this GitHub repo.
+Every push to `main` goes live automatically. Site files live in `/public`; `wrangler.jsonc` tells Cloudflare to serve that folder.
 
 ## (Optional) Also receive briefs by email
 1. Create a free form at formspree.io and copy its endpoint URL.
-2. In `contact.html`, find `data-endpoint=""` on the `<form id="brief">` and paste the URL inside the quotes.
+2. In `public/contact.html`, find `data-endpoint=""` on the `<form id="brief">` and paste the URL inside the quotes.
 Briefs (name, email, company, details, chosen services and budget) will then arrive in your inbox.
 
 ## Fill in before launch

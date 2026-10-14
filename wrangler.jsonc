@@ -1,0 +1,9 @@
+{
+  // Cloudflare deploy config — serves everything in /public as a static site
+  "name": "nomi-studio",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
