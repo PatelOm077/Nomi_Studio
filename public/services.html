@@ -225,6 +225,17 @@ html.js .draw.in{transform:scaleX(1)}
   .hv{transform:scale(.8)!important}
   .deck{box-shadow:0 24px 40px -20px rgba(0,0,0,.8)!important}
 }
+
+@media (max-width: 760px){
+  .tiles>a span[style*="font-size: 40px"]{font-size:clamp(21px,6.2vw,27px)!important;overflow-wrap:anywhere}
+  .deckWrap{transform:none!important;zoom:.8;margin:0 auto!important}
+  .hv{transform:none!important;zoom:.8;margin:0 auto!important}
+  .travel{animation-duration:14s!important}
+  .seg{animation-duration:14s!important}
+  .steps>.step:nth-child(2) .seg{animation-delay:3.5s!important}
+  .steps>.step:nth-child(3) .seg{animation-delay:7s!important}
+  .steps>.step:nth-child(4) .seg{animation-delay:10.5s!important}
+}
 </style>
 </head>
 <body>
@@ -620,7 +631,7 @@ html.js .draw.in{transform:scaleX(1)}
   ['touchstart','pointerdown','wheel'].forEach(function(ev){row.addEventListener(ev,function(){hold=Date.now()+7000;},{passive:true});});
   setInterval(function(){
     if(!mq.matches||!vis||Date.now()<hold)return;
-    var idx=Math.floor(performance.now()/2000)%row.children.length;
+    var idx=Math.floor(performance.now()/3500)%row.children.length;
     if(idx===last)return;last=idx;
     row.scrollTo({left:row.children[idx].offsetLeft-row.children[0].offsetLeft,behavior:'smooth'});
   },250);
