@@ -130,6 +130,37 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 }
 @supports (animation-timeline: view()){footer .reveal,.bigname.reveal{animation-range:entry 0% entry 80%}}
 @media (prefers-reduced-motion: reduce){.mnav{transition:none!important}.mlinks a{opacity:1;transform:none}}
+
+.swipe{display:none}
+@media (max-width: 760px){
+  .hero{gap:34px!important;padding-top:44px!important}
+  .scrollHint{display:none!important}
+  .ctaRow{width:100%;flex-wrap:nowrap!important}
+  .ctaRow>a{flex:1 1 0;justify-content:center;text-align:center;white-space:nowrap}
+  .ctaRow>a.btn{justify-content:space-between}
+  .ctaRow{gap:10px!important}
+  .ctaRow>a{font-size:15px!important;padding-left:16px!important;padding-right:16px!important;min-width:0}
+  .ctaRow>a.btn{padding:6px 6px 6px 18px!important;gap:8px}
+  .ctaRow>a.btn .ic{width:36px;height:36px}
+  .deckWrap{margin:-28px auto -36px}
+  .hv{margin:-34px auto}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .tiles>a{gap:26px!important;padding:20px 16px!important}
+  .tiles>a span[style*="font-size: 40px"]{font-size:28px!important}
+  .tiles>a span[style*="font-size: 15px"]{font-size:13px!important}
+  .snap{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px!important;margin-left:-20px!important;margin-right:-20px!important;padding:2px 20px 10px!important;scrollbar-width:none;-webkit-overflow-scrolling:touch;border:0!important;background:none!important}
+  .snap::-webkit-scrollbar{display:none}
+  .snap>*{flex:0 0 84%!important;scroll-snap-align:start;min-width:0!important;max-width:none!important}
+  .steps>.step{border:1px solid #2A2A2C!important;border-radius:18px;padding:26px 22px!important;gap:30px!important;background:#0F0F11}
+  .steps .num{font-size:84px!important}
+  .swipe{display:flex;align-items:center;gap:10px;margin-top:16px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.18em;color:#9A9893}
+  .chipRow{flex-wrap:nowrap!important;overflow-x:auto;margin-left:-20px;margin-right:-20px;padding:0 20px 4px;scrollbar-width:none}
+  .chipRow::-webkit-scrollbar{display:none}
+  .chipRow .chip{flex-shrink:0}
+  .facts{grid-template-columns:1fr!important}
+  .sendRow{flex-direction:column-reverse;align-items:stretch!important}
+  .sendRow .btn{justify-content:space-between}
+}
 </style>
 </head>
 <body>
@@ -152,7 +183,7 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </div>
 </header>
 
-<section style="max-width: 1312px; margin: 0 auto; padding: clamp(56px, 9vw, 120px) clamp(20px, 5vw, 64px) clamp(48px, 6vw, 80px); display: flex; flex-direction: column; gap: 52px">
+<section class="hero" style="max-width: 1312px; margin: 0 auto; padding: clamp(56px, 9vw, 120px) clamp(20px, 5vw, 64px) clamp(48px, 6vw, 80px); display: flex; flex-direction: column; gap: 52px">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 48px">
 <h1 style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(58px, 9.6vw, 150px); line-height: 0.94; letter-spacing: -0.04em; flex: 999 1 620px">
 <span class="w" style="animation-delay: .95s">Digital</span> <span class="w" style="animation-delay: 1.05s">experiences,</span><br>
@@ -215,12 +246,12 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-end; justify-content: space-between">
 <p class="fade" style="margin: 0; max-width: 540px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #B5B3AE; animation-delay: 1.65s">Nomi Studio is an independent web studio. We partner with ambitious brands to design, build and launch websites that look premium, load fast and turn visitors into clients.</p>
-<div class="fade" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; animation-delay: 1.8s">
+<div class="fade ctaRow" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; animation-delay: 1.8s">
 <a class="btn" href="contact.html">Start a project<span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span></a>
 <a class="ghost" href="work.html">View our work</a>
 </div>
 </div>
-<div class="fade" style="display: flex; align-items: center; gap: 14px; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: #9A9893; animation-delay: 2s"><span style="width: 1px; height: 44px; background: #2A2A2C; position: relative; overflow: hidden"><span class="hint" style="position: absolute; inset: 0; background: #FF4F1F"></span></span>SCROLL</div>
+<div class="fade scrollHint" style="display: flex; align-items: center; gap: 14px; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: #9A9893; animation-delay: 2s"><span style="width: 1px; height: 44px; background: #2A2A2C; position: relative; overflow: hidden"><span class="hint" style="position: absolute; inset: 0; background: #FF4F1F"></span></span>SCROLL</div>
 </section>
 
 <div aria-hidden="true" style="position: relative; height: clamp(230px, 24vw, 320px); overflow: hidden; display: flex; align-items: center; justify-content: center">
@@ -240,7 +271,7 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 
 <section style="max-width: 1312px; margin: 0 auto; padding: clamp(80px, 11vw, 160px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: 56px">
 <p class="reveal" style="margin: 0; font-family: 'Instrument Serif', serif; font-size: clamp(34px, 4.6vw, 68px); line-height: 1.12; letter-spacing: -0.025em; max-width: 1150px">We’re a small, senior team that treats every website like a <span style="font-style: italic; color: #FF4F1F">flagship store</span> — strategy, design and engineering under one roof, <span style="font-style: italic; color: #9A9893">obsessed with the details others skip.</span></p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid #2A2A2C; border-left: 1px solid #2A2A2C">
+<div class="tiles" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); border-top: 1px solid #2A2A2C; border-left: 1px solid #2A2A2C">
 <a class="tile reveal" href="services.html" style="border-right: 1px solid #2A2A2C; border-bottom: 1px solid #2A2A2C; padding: 30px 26px; display: flex; flex-direction: column; gap: 64px">
 <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em">01</span><svg class="arr" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></div>
 <div style="display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Instrument Serif', serif; font-size: 40px; line-height: 1">Strategy</span><span style="font-size: 15px; line-height: 1.55; opacity: 0.7">Positioning, sitemap and content that sells.</span></div>
@@ -299,7 +330,7 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 <span class="draw" style="position: absolute; inset: 0; background: #3A3A3D; transform-origin: left"></span>
 <span class="travel" aria-hidden="true" style="position: absolute; top: -5px; margin-left: -5px; width: 11px; height: 11px; border-radius: 999px; background: #FF4F1F; box-shadow: 0 0 0 6px rgba(255, 79, 31, 0.18), 0 0 24px rgba(255, 79, 31, 0.6)"></span>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))">
+<div class="steps snap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))">
 <div class="step reveal" style="padding: 40px 28px 34px; border-right: 1px solid #1E1E21; display: flex; flex-direction: column; gap: 44px">
 <div style="display: flex; justify-content: space-between; align-items: flex-start"><span class="num" style="font-family: 'Instrument Serif', serif; font-size: 110px; line-height: 0.75; animation-delay: 0s">01</span>
 <svg class="bob" width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#D6D4CF" stroke-width="1.4"></circle><path d="M15.5 15.5 L21 21" stroke="#FF4F1F" stroke-width="1.6"></path></svg></div>
@@ -325,6 +356,7 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 <div style="display: flex; flex-direction: column; gap: 12px"><div style="height: 2px; background: #1E1E21; overflow: hidden"><span class="seg" style="animation-delay: 6s"></span></div><span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #9A9893">LAUNCH · SEO · CARE</span></div>
 </div>
 </div>
+<div class="swipe" aria-hidden="true">SWIPE<svg width="22" height="10" viewBox="0 0 22 10"><path d="M0 5 H20 M15 1 L20 5 L15 9" fill="none" stroke="#FF4F1F" stroke-width="1.4"></path></svg></div>
 </div>
 </section>
 
