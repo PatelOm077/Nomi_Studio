@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nomi Studio — Studio</title>
+<meta name="description" content="Meet Nomi Studio — an independent web studio for ambitious brands, founded by Om Patel.">
+<meta property="og:title" content="Nomi Studio — Studio">
+<meta property="og:description" content="Meet Nomi Studio — an independent web studio for ambitious brands, founded by Om Patel.">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@300;400;500&amp;family=Geist+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0B0B0C}
+a{color:#F2F1EE}a:hover{color:#FF4F1F}
+@keyframes curtain{0%,45%{transform:translateY(0)}100%{transform:translateY(-100%)}}
+@keyframes curtainText{0%{opacity:0;transform:translateY(24px)}25%,40%{opacity:1;transform:none}60%,100%{opacity:0;transform:translateY(-24px)}}
+@keyframes blurIn{from{opacity:0;filter:blur(16px);transform:translateY(24px)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes unveil{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.curtain{position:fixed;inset:0;z-index:100;background:#F2F1EE;color:#0B0B0C;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:curtain 1.5s cubic-bezier(.76,0,.24,1) both}
+.curtain>span{animation:curtainText 1.5s cubic-bezier(.76,0,.24,1) both}
+.bar{position:fixed;top:0;left:0;right:0;height:2px;background:#FF4F1F;transform-origin:left;transform:scaleX(0);z-index:60}
+@supports (animation-timeline: scroll()){.bar{animation:grow linear both;animation-timeline:scroll(root)}}
+.w{display:inline-block;animation:blurIn 1.2s cubic-bezier(.16,.84,.24,1) both}
+.fade{animation:fadeUp 1.1s cubic-bezier(.16,.84,.24,1) both}
+@supports (animation-timeline: view()){.reveal{animation:fadeUp linear both;animation-timeline:view();animation-range:entry 0% cover 25%}.unveil{animation:unveil linear both;animation-timeline:view();animation-range:entry 0% cover 40%}}
+.track{animation:marquee 30s linear infinite}
+.dot{display:inline-block;animation:pulse 2.4s ease-in-out infinite}
+.spin{animation:spin 18s linear infinite}
+.roll{display:inline-flex;overflow:hidden;height:1.3em;line-height:1.3em;text-decoration:none;color:#B5B3AE}
+.roll>span{display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.76,0,.24,1)}
+.roll:hover>span{transform:translateY(-50%)}
+.roll>span>span+span{color:#FF4F1F}
+.roll.on{color:#F2F1EE}
+.btn{display:inline-flex;align-items:center;gap:12px;text-decoration:none;border-radius:999px;padding:7px 7px 7px 24px;font-weight:500;font-size:16px;color:#0B0B0C;background:linear-gradient(#FF4F1F,#FF4F1F) no-repeat bottom/100% 0%,#F2F1EE;transition:background-size .5s cubic-bezier(.76,0,.24,1)}
+.btn:hover{background-size:100% 100%;color:#0B0B0C}
+.btn .ic{width:40px;height:40px;border-radius:999px;background:#0B0B0C;color:#F2F1EE;display:flex;align-items:center;justify-content:center;transition:transform .5s cubic-bezier(.76,0,.24,1)}
+.btn:hover .ic{transform:rotate(-45deg)}
+.btn.dark{color:#F2F1EE;background:linear-gradient(#FF4F1F,#FF4F1F) no-repeat bottom/100% 0%,#0B0B0C}
+.btn.dark:hover{background-size:100% 100%;color:#0B0B0C}
+.btn.dark .ic{background:#F2F1EE;color:#0B0B0C}
+.pr{transition:background .5s,color .5s,padding .5s cubic-bezier(.76,0,.24,1)}
+.pr:hover{background:#F2F1EE;color:#0B0B0C;padding-left:28px!important}
+.pr .pn{transition:color .5s}
+.pr:hover .pn{color:#FF4F1F}
+.frame .portrait{transition:transform 1.2s cubic-bezier(.16,.84,.24,1)}
+.frame:hover .portrait{transform:scale(1.05)}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+.grain{position:fixed;left:-50%;top:-50%;width:200%;height:200%;pointer-events:none;z-index:90;opacity:.07;animation:grain 1.2s steps(5) infinite}
+.bigname .l{display:inline-block;transition:transform .55s cubic-bezier(.16,.84,.24,1),color .4s}
+.bigname .l:hover{transform:translateY(-12%) rotate(-5deg);color:#FF4F1F}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.curtain,.grain{display:none}}
+
+@keyframes waIn{from{opacity:0;transform:translateY(30px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes waRing{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+.wa{position:fixed;right:24px;bottom:24px;z-index:80;display:flex;align-items:center;gap:10px;background:#F2F1EE;color:#0B0B0C;text-decoration:none;border-radius:999px;padding:7px 20px 7px 7px;font-family:'Geist',sans-serif;font-weight:500;font-size:14px;box-shadow:0 20px 40px -12px rgba(0,0,0,.7);animation:waIn .8s 2s cubic-bezier(.16,.84,.24,1) both;transition:transform .45s cubic-bezier(.16,.84,.24,1)}
+.wa:hover{transform:translateY(-4px);color:#0B0B0C}
+.waIc{position:relative;width:42px;height:42px;border-radius:999px;background:#25D366;color:#FFFFFF;display:flex;align-items:center;justify-content:center}
+.waIc::after{content:"";position:absolute;inset:0;border-radius:999px;border:2px solid #25D366;animation:waRing 2.2s ease-out infinite}
+.menuBtn{display:none;align-items:center;gap:10px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid #3A3A3D;background:transparent;color:#F2F1EE;font-family:'Geist',sans-serif;font-size:14px;cursor:pointer}
+.menuBtn i{display:flex;flex-direction:column;gap:4px}.menuBtn i b{display:block;width:16px;height:1.5px;background:#F2F1EE}
+.mnav{position:fixed;inset:0;z-index:95;background:#0B0B0C;color:#F2F1EE;font-family:'Geist',sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:20px;box-sizing:border-box;visibility:hidden;clip-path:circle(0% at calc(100% - 50px) 44px);transition:clip-path .75s cubic-bezier(.76,0,.24,1),visibility 0s .75s}
+body.menu-open{overflow:hidden}
+body.menu-open .mnav{visibility:visible;clip-path:circle(150% at calc(100% - 50px) 44px);transition:clip-path .75s cubic-bezier(.76,0,.24,1)}
+body.menu-open .wa{opacity:0;pointer-events:none}
+.mnav .mtop{display:flex;justify-content:space-between;align-items:center}
+.mlinks{display:flex;flex-direction:column;gap:4px}
+.mlinks a{display:flex;align-items:baseline;gap:16px;text-decoration:none;color:#F2F1EE;font-family:'Instrument Serif',serif;font-size:clamp(48px,14vw,72px);line-height:1.08;letter-spacing:-0.03em;opacity:0;transform:translateY(40px);transition:opacity .6s,transform .7s cubic-bezier(.16,.84,.24,1),color .3s}
+.mlinks a span{font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6E6C67}
+.mlinks a[aria-current="page"]{color:#FF4F1F}
+body.menu-open .mlinks a{opacity:1;transform:none}
+body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlinks a:nth-child(2){transition-delay:.3s}body.menu-open .mlinks a:nth-child(3){transition-delay:.35s}body.menu-open .mlinks a:nth-child(4){transition-delay:.4s}body.menu-open .mlinks a:nth-child(5){transition-delay:.45s}
+.mfoot{display:flex;flex-direction:column;gap:14px;border-top:1px solid #2A2A2C;padding-top:20px;font-size:15px}
+.mfoot a{color:#D6D4CF;text-decoration:none;display:flex;align-items:center;gap:10px;min-height:32px}
+@media (max-width: 760px){
+  header nav{display:none!important}
+  .menuBtn{display:inline-flex}
+  [style*="flex: 999 1"],[style*="flex: 1 1"],[style*="flex: 1.2 1"],[style*="flex: 1.3 1"],[style*="flex: 1.6 1"]{flex-basis:100%!important;min-width:0!important;max-width:100%!important}
+  .hv{transform:scale(.84)}
+  .deckWrap{transform:scale(.9)}
+  .wa{right:16px;bottom:16px;padding:7px}
+  .waTxt{display:none}
+  footer .roll{margin:5px 0}
+}
+@supports (animation-timeline: view()){footer .reveal,.bigname.reveal{animation-range:entry 0% entry 80%}}
+@media (prefers-reduced-motion: reduce){.mnav{transition:none!important}.mlinks a{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div style="width: 100%; background: #0B0B0C; color: #F2F1EE; font-family: 'Geist', sans-serif; overflow: hidden">
+<div class="curtain" aria-hidden="true"><span style="font-family: 'Instrument Serif', serif; font-size: clamp(48px, 7vw, 96px); letter-spacing: -0.035em">The <span style="font-style: italic; color: #6E6C67">Studio</span><span style="color: #FF4F1F">.</span></span></div>
+<div class="bar" aria-hidden="true"></div>
+
+<svg class="grain" aria-hidden="true"><filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#grainF)"></rect></svg>
+<header style="position: sticky; top: 0; z-index: 40; background: rgba(11, 11, 12, 0.82); backdrop-filter: blur(14px); border-bottom: 1px solid #1E1E21">
+<div style="max-width: 1312px; margin: 0 auto; padding: 18px clamp(20px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between">
+<a href="index.html" style="text-decoration: none; font-family: 'Instrument Serif', serif; font-size: 30px; letter-spacing: -0.03em; color: #F2F1EE">Nomi <span style="font-style: italic; color: #D6D4CF">Studio</span><span style="color: #FF4F1F">.</span></a>
+<button class="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">Menu<i aria-hidden="true"><b></b><b></b></i></button>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 30px; font-size: 15px">
+<a class="roll" href="services.html"><span><span>Services</span><span aria-hidden="true">Services</span></span></a>
+<a class="roll" href="work.html"><span><span>Work</span><span aria-hidden="true">Work</span></span></a>
+<a class="roll on" href="studio.html" aria-current="page"><span><span>Studio</span><span aria-hidden="true">Studio</span></span></a>
+<a class="btn" href="contact.html" style="font-size: 14px; padding: 5px 5px 5px 18px">Start a project<span class="ic" style="width: 32px; height: 32px"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="currentColor" stroke-width="2.2"></path></svg></span></a>
+</nav>
+</div>
+</header>
+
+<section style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 64px) clamp(56px, 7vw, 100px); display: flex; flex-direction: column; gap: 40px">
+<span class="fade" style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893; animation-delay: .9s">(03) — THE STUDIO</span>
+<h1 style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(56px, 9vw, 140px); line-height: 0.94; letter-spacing: -0.04em; max-width: 1200px">
+<span class="w" style="animation-delay: .95s">An</span> <span class="w" style="animation-delay: 1.03s">independent</span> <span class="w" style="animation-delay: 1.11s">studio</span> <span class="w" style="animation-delay: 1.19s">for</span> <span class="w" style="animation-delay: 1.27s; font-style: italic; color: #D6D4CF">ambitious</span> <span class="w" style="animation-delay: 1.35s">brands<span style="color: #FF4F1F">.</span></span>
+</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-start; justify-content: space-between">
+<p class="fade" style="margin: 0; flex: 1 1 420px; max-width: 620px; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.6; color: #B5B3AE; animation-delay: 1.5s">Nomi Studio was founded on a simple belief: a website should feel as considered as the brand behind it. We combine design, engineering and AI under one roof, so every project gets a senior team — not a template.</p>
+<svg class="spin fade" width="150" height="150" viewBox="0 0 300 300" role="img" aria-label="Nomi Studio, independent since 2026" style="animation-delay: 1.6s">
+<defs><path id="aboutRing" d="M150,150 m-118,0 a118,118 0 1,1 236,0 a118,118 0 1,1 -236,0"></path></defs>
+<text fill="#D6D4CF" style="font-family: 'Geist Mono', monospace; font-size: 17px; letter-spacing: 6px; text-transform: uppercase"><textPath href="#aboutRing">Independent · Since 2026 · Nomi Studio ·</textPath></text>
+<circle cx="150" cy="150" r="10" fill="#FF4F1F"></circle>
+</svg>
+</div>
+</section>
+
+<section style="max-width: 1312px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px) clamp(80px, 11vw, 150px); display: flex; flex-direction: column; gap: 44px">
+<div class="reveal" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<h2 style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(46px, 6.4vw, 96px); line-height: 1; letter-spacing: -0.035em">What we <span style="font-style: italic; color: #D6D4CF">believe</span><span style="color: #FF4F1F">.</span></h2>
+<span style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893">PRINCIPLES</span>
+</div>
+<div style="border-top: 1px solid #2A2A2C">
+<div class="pr reveal" style="display: flex; flex-wrap: wrap; gap: 16px 40px; align-items: baseline; padding: 34px 8px; border-bottom: 1px solid #2A2A2C">
+<span class="pn" style="font-family: 'Geist Mono', monospace; font-size: 13px; width: 40px">I.</span>
+<span style="font-family: 'Instrument Serif', serif; font-size: clamp(32px, 4vw, 58px); line-height: 1; flex: 1 1 380px">Craft over <span style="font-style: italic">templates</span></span>
+<span style="font-size: 16px; line-height: 1.6; flex: 1 1 320px; opacity: 0.75">Every site is designed from a blank page around your brand — never a theme with your logo dropped in.</span>
+</div>
+<div class="pr reveal" style="display: flex; flex-wrap: wrap; gap: 16px 40px; align-items: baseline; padding: 34px 8px; border-bottom: 1px solid #2A2A2C">
+<span class="pn" style="font-family: 'Geist Mono', monospace; font-size: 13px; width: 40px">II.</span>
+<span style="font-family: 'Instrument Serif', serif; font-size: clamp(32px, 4vw, 58px); line-height: 1; flex: 1 1 380px">Speed is a <span style="font-style: italic">feature</span></span>
+<span style="font-size: 16px; line-height: 1.6; flex: 1 1 320px; opacity: 0.75">Beautiful means nothing if it loads slowly. We engineer for performance from the first line of code.</span>
+</div>
+<div class="pr reveal" style="display: flex; flex-wrap: wrap; gap: 16px 40px; align-items: baseline; padding: 34px 8px; border-bottom: 1px solid #2A2A2C">
+<span class="pn" style="font-family: 'Geist Mono', monospace; font-size: 13px; width: 40px">III.</span>
+<span style="font-family: 'Instrument Serif', serif; font-size: clamp(32px, 4vw, 58px); line-height: 1; flex: 1 1 380px">Direct line, <span style="font-style: italic">no handoffs</span></span>
+<span style="font-size: 16px; line-height: 1.6; flex: 1 1 320px; opacity: 0.75">You talk to the people actually designing and building your site — from kickoff to launch day.</span>
+</div>
+<div class="pr reveal" style="display: flex; flex-wrap: wrap; gap: 16px 40px; align-items: baseline; padding: 34px 8px; border-bottom: 1px solid #2A2A2C">
+<span class="pn" style="font-family: 'Geist Mono', monospace; font-size: 13px; width: 40px">IV.</span>
+<span style="font-family: 'Instrument Serif', serif; font-size: clamp(32px, 4vw, 58px); line-height: 1; flex: 1 1 380px">Built to <span style="font-style: italic">grow</span></span>
+<span style="font-size: 16px; line-height: 1.6; flex: 1 1 320px; opacity: 0.75">Clean systems, smart CMS and AI where it helps — so your site scales with your ambition.</span>
+</div>
+</div>
+</section>
+
+<section style="background: #F2F1EE; color: #0B0B0C">
+<div style="max-width: 1312px; margin: 0 auto; padding: clamp(80px, 11vw, 150px) clamp(20px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: clamp(40px, 6vw, 96px); align-items: center">
+<div class="frame unveil" style="flex: 1 1 320px; max-width: 460px; overflow: hidden; position: relative; border-radius: 10px">
+<img class="portrait" src="assets/om-patel.jpg" alt="Om Patel, founder of Nomi Studio" style="display: block; width: 100%; aspect-ratio: 15 / 16; object-fit: cover; object-position: center 30%">
+</div>
+<div class="reveal" style="flex: 999 1 420px; display: flex; flex-direction: column; gap: 28px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #6E6C67">FOUNDER</span>
+<h2 style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(48px, 6.4vw, 96px); line-height: 0.95; letter-spacing: -0.035em">Om <span style="font-style: italic; color: #6E6C67">Patel</span><span style="color: #FF4F1F">.</span></h2>
+<p style="margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.65; color: #2A2A2C; max-width: 560px">Om leads the studio’s design and engineering. With deep roots in Python and AI, he brings a builder’s mindset to every project — making sure each Nomi site is as intelligent under the hood as it is beautiful on the surface.</p>
+<p style="margin: 0; font-family: 'Instrument Serif', serif; font-style: italic; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3; color: #0B0B0C; max-width: 560px; border-left: 2px solid #FF4F1F; padding-left: 20px">“We don’t make websites that look nice. We make websites people remember.”</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: #D9D7D2; border: 1px solid #D9D7D2; max-width: 600px">
+<div style="background: #F2F1EE; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #6E6C67">ROLE</span><span style="font-size: 16px">Founder &amp; Creative Lead</span></div>
+<div style="background: #F2F1EE; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #6E6C67">STUDIO</span><span style="font-size: 16px">India · Worldwide</span></div>
+<div style="background: #F2F1EE; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #6E6C67">FOCUS</span><span style="font-size: 16px">Web · Design · AI</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<div aria-hidden="true" style="border-bottom: 1px solid #1E1E21; padding: 30px 0; overflow: hidden">
+<div class="track" style="display: flex; width: max-content; gap: 48px; align-items: center; font-family: 'Instrument Serif', serif; font-size: clamp(36px, 4.4vw, 64px); white-space: nowrap">
+<span style="color: #9A9893; font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.18em">OUR TOOLKIT</span><span>Figma</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span style="font-style: italic; color: #D6D4CF">JavaScript</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span>Shopify</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span style="font-style: italic; color: #D6D4CF">Python</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span>FastAPI</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span style="font-style: italic; color: #D6D4CF">AI</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span>
+<span style="color: #9A9893; font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.18em">OUR TOOLKIT</span><span>Figma</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span style="font-style: italic; color: #D6D4CF">JavaScript</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span>Shopify</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span style="font-style: italic; color: #D6D4CF">Python</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span>FastAPI</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span><span style="font-style: italic; color: #D6D4CF">AI</span><span class="dot" style="width: 10px; height: 10px; border-radius: 999px; background: #FF4F1F"></span>
+</div>
+</div>
+
+<section style="max-width: 1312px; margin: 0 auto; padding: clamp(80px, 11vw, 150px) clamp(20px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between">
+<h2 class="reveal" style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(56px, 9vw, 140px); line-height: 0.92; letter-spacing: -0.045em">Let’s make<br><span style="font-style: italic; color: #D6D4CF">yours next</span><span style="color: #FF4F1F">.</span></h2>
+<a class="btn reveal" href="contact.html" style="font-size: 18px">Start a project<span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span></a>
+</section>
+
+<footer style="border-top: 1px solid #1E1E21; overflow: hidden">
+<div style="max-width: 1312px; margin: 0 auto; padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 64px) 28px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between">
+<p style="margin: 0; max-width: 360px; font-size: 16px; line-height: 1.6; color: #B5B3AE">An independent web studio crafting premium websites for ambitious brands.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 64px">
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px"><span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #6E6C67">PAGES</span><a class="roll" href="index.html"><span><span>Home</span><span aria-hidden="true">Home</span></span></a><a class="roll" href="services.html"><span><span>Services</span><span aria-hidden="true">Services</span></span></a><a class="roll" href="work.html"><span><span>Work</span><span aria-hidden="true">Work</span></span></a><a class="roll" href="studio.html"><span><span>Studio</span><span aria-hidden="true">Studio</span></span></a><a class="roll" href="contact.html"><span><span>Contact</span><span aria-hidden="true">Contact</span></span></a></div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 15px"><span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #6E6C67">CONNECT</span><a class="roll" href="https://wa.me/917574975787?text=Hi%20Nomi%20Studio!%20I%27d%20like%20to%20talk%20about%20a%20website." target="_blank" rel="noopener"><span><span>WhatsApp</span><span aria-hidden="true">WhatsApp</span></span></a><a class="roll" href="https://instagram.com"><span><span>Instagram</span><span aria-hidden="true">Instagram</span></span></a><a class="roll" href="https://linkedin.com"><span><span>LinkedIn</span><span aria-hidden="true">LinkedIn</span></span></a><a class="roll" href="mailto:hello@nomistudio.com"><span><span>[hello@nomistudio.com]</span><span aria-hidden="true">[hello@nomistudio.com]</span></span></a></div>
+</div>
+</div>
+<div class="reveal bigname" aria-hidden="true" style="font-family: 'Instrument Serif', serif; font-size: clamp(64px, 15vw, 220px); line-height: 0.85; letter-spacing: -0.05em; white-space: nowrap"><span class="l">N</span><span class="l">o</span><span class="l">m</span><span class="l">i</span> <span style="font-style: italic; color: #D6D4CF"><span class="l">S</span><span class="l">t</span><span class="l">u</span><span class="l">d</span><span class="l">i</span><span class="l">o</span></span><span class="l" style="color: #FF4F1F">.</span></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #9A9893; border-top: 1px solid #1E1E21; padding-top: 20px"><span>© 2026 Nomi Studio. All rights reserved.</span><span>Crafted in India — for the world.</span></div>
+</div>
+</footer>
+</div>
+<div class="mnav" id="mnav" aria-hidden="true">
+<div class="mtop"><a href="index.html" style="text-decoration: none; font-family: 'Instrument Serif', serif; font-size: 30px; letter-spacing: -0.03em; color: #F2F1EE">Nomi <span style="font-style: italic; color: #D6D4CF">Studio</span><span style="color: #FF4F1F">.</span></a><button class="mclose menuBtn" type="button" style="display: inline-flex">Close</button></div>
+<nav class="mlinks" aria-label="Mobile"><a href="index.html"><span>01</span>Home</a>
+<a href="services.html"><span>02</span>Services</a>
+<a href="work.html"><span>03</span>Work</a>
+<a href="studio.html" aria-current="page"><span>04</span>Studio</a>
+<a href="contact.html"><span>05</span>Contact</a></nav>
+<div class="mfoot"><a href="https://wa.me/917574975787?text=Hi%20Nomi%20Studio!%20I%27d%20like%20to%20talk%20about%20a%20website." target="_blank" rel="noopener"><span class="waIc" style="width: 32px; height: 32px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path><path d="M8.6 7.6c.3-.3.8-.3 1 .1l.9 1.8c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.6c.2-.2.5-.3.8-.2l1.8.9c.4.2.4.7.1 1l-.7.8c-.5.5-1.3.6-2 .3-2.5-1.1-4.5-3.1-5.6-5.6-.3-.7-.2-1.5.3-2z" fill="currentColor"></path></svg></span>WhatsApp +91 75749 75787</a><a href="mailto:hello@nomistudio.com">[hello@nomistudio.com]</a><a href="https://instagram.com">Instagram [@nomistudio]</a></div>
+</div>
+<a class="wa" href="https://wa.me/917574975787?text=Hi%20Nomi%20Studio!%20I%27d%20like%20to%20talk%20about%20a%20website." target="_blank" rel="noopener" aria-label="Chat with Nomi Studio on WhatsApp"><span class="waIc"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path><path d="M8.6 7.6c.3-.3.8-.3 1 .1l.9 1.8c.1.3 0 .6-.2.8l-.6.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.6c.2-.2.5-.3.8-.2l1.8.9c.4.2.4.7.1 1l-.7.8c-.5.5-1.3.6-2 .3-2.5-1.1-4.5-3.1-5.6-5.6-.3-.7-.2-1.5.3-2z" fill="currentColor"></path></svg></span><span class="waTxt">Chat on WhatsApp</span></a>
+
+<script>
+(function(){
+  var b=document.body,btn=document.querySelector('.menuBtn'),close=document.querySelector('.mclose'),nav=document.getElementById('mnav');
+  function set(o){b.classList.toggle('menu-open',o);btn.setAttribute('aria-expanded',String(o));nav.setAttribute('aria-hidden',String(!o));if(o){close.focus();}else{btn.focus();}}
+  btn.addEventListener('click',function(){set(true);});
+  close.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&b.classList.contains('menu-open'))set(false);});
+})();
+</script>
+</body>
+</html>
