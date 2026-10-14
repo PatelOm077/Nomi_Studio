@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("nomiSeen"))document.documentElement.classList.add("seen");sessionStorage.setItem("nomiSeen","1")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nomi Studio — Work</title>
 <meta name="description" content="Selected work from Nomi Studio — brand sites, online stores and web apps.">
@@ -22,8 +23,8 @@ a{color:#F2F1EE}a:hover{color:#FF4F1F}
 @keyframes cardIn{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes drift{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(14px,-10px) rotate(4deg)}}
-.curtain{position:fixed;inset:0;z-index:100;background:#F2F1EE;color:#0B0B0C;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:curtain 1.5s cubic-bezier(.76,0,.24,1) both}
-.curtain>span{animation:curtainText 1.5s cubic-bezier(.76,0,.24,1) both}
+.curtain{position:fixed;inset:0;z-index:100;background:#F2F1EE;color:#0B0B0C;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:curtain 1s cubic-bezier(.76,0,.24,1) both}
+.curtain>span{animation:curtainText 1s cubic-bezier(.76,0,.24,1) both}
 .bar{position:fixed;top:0;left:0;right:0;height:2px;background:#FF4F1F;transform-origin:left;transform:scaleX(0);z-index:60}
 @supports (animation-timeline: scroll()){.bar{animation:grow linear both;animation-timeline:scroll(root)}}
 .w{display:inline-block;animation:blurIn 1.2s cubic-bezier(.16,.84,.24,1) both}
@@ -140,10 +141,14 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 }
 @media (hover: none) and (max-width: 760px){
   header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(11,11,12,0.97)!important}
-  @supports (animation-timeline: view()){.card .img{animation:kb linear both;animation-timeline:view();animation-range:entry 0% cover 60%}}
   .grain{opacity:.05}
 }
 @media (prefers-reduced-motion: reduce){.bigname .l,.card .img{animation:none!important}}
+
+:root{--cut:.45s}
+html.seen{--cut:.92s}
+html.seen .curtain{display:none!important}
+@media (max-width: 760px){.card .tag{font-size:12px!important;padding:7px 12px!important;left:auto!important;right:10px!important;top:10px!important;bottom:auto!important;box-shadow:0 6px 20px rgba(0,0,0,.35)}}
 </style>
 </head>
 <body>
@@ -167,12 +172,12 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </header>
 
 <section style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 64px) clamp(40px, 5vw, 64px); display: flex; flex-direction: column; gap: 40px">
-<span class="fade" style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893; animation-delay: .9s">(02) — SELECTED WORK</span>
+<span class="fade" style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893; animation-delay: calc(.9s - var(--cut))">(02) — SELECTED WORK</span>
 <h1 style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(56px, 9vw, 140px); line-height: 0.94; letter-spacing: -0.04em">
-<span class="w" style="animation-delay: .95s">Work</span> <span class="w" style="animation-delay: 1.05s">we’re</span> <span class="w" style="animation-delay: 1.15s; font-style: italic; color: #D6D4CF">proud</span> <span class="w" style="animation-delay: 1.25s">of<span style="color: #FF4F1F">.</span></span>
+<span class="w" style="animation-delay: calc(.95s - var(--cut))">Work</span> <span class="w" style="animation-delay: calc(1.05s - var(--cut))">we’re</span> <span class="w" style="animation-delay: calc(1.15s - var(--cut)); font-style: italic; color: #D6D4CF">proud</span> <span class="w" style="animation-delay: calc(1.25s - var(--cut))">of<span style="color: #FF4F1F">.</span></span>
 </h1>
-<p class="fade" style="margin: 0; max-width: 560px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #B5B3AE; animation-delay: 1.35s">Premium website templates we build, customise and launch for brands — tap any to see it live.</p>
-<div class="fade chipRow" role="group" aria-label="Filter projects" style="display: flex; flex-wrap: wrap; gap: 10px; animation-delay: 1.4s">
+<p class="fade" style="margin: 0; max-width: 560px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #B5B3AE; animation-delay: calc(1.35s - var(--cut))">Premium website templates we build, customise and launch for brands — tap any to see it live.</p>
+<div class="fade chipRow" role="group" aria-label="Filter projects" style="display: flex; flex-wrap: wrap; gap: 10px; animation-delay: calc(1.4s - var(--cut))">
 <button class="chip on" type="button" aria-pressed="true" data-f="ALL">All</button>
 <button class="chip off" type="button" aria-pressed="false" data-f="BRAND">Brand</button>
 <button class="chip off" type="button" aria-pressed="false" data-f="E-COMMERCE">E-commerce</button>
@@ -183,8 +188,8 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 <section style="max-width: 1312px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px) clamp(80px, 11vw, 150px)">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 56px 32px">
 <a class="card" href="https://in-house.framer.website/" target="_blank" rel="noopener" data-cat="BRAND" style="display: flex; flex-direction: column; gap: 18px; animation-delay: 0.00s">
-<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 5 / 4; background: #141416">
-<img class="img" src="assets/work/inhouse.jpg" alt="In-House website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
+<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: #141416">
+<img class="img" src="assets/work/inhouse.webp" alt="In-House website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
 <span class="tag" style="position: absolute; left: 18px; bottom: 18px; display: flex; align-items: center; background: #F2F1EE; color: #0B0B0C; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 500">View live site<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: 6px"><path d="M6 18 L18 6 M9 6 H18 V15" fill="none" stroke="currentColor" stroke-width="2.4"></path></svg></span>
 </div>
 <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start">
@@ -193,8 +198,8 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </div>
 </a>
 <a class="card" href="https://velvoir.framer.website/" target="_blank" rel="noopener" data-cat="E-COMMERCE" style="display: flex; flex-direction: column; gap: 18px; animation-delay: 0.08s">
-<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 5 / 4; background: #141416">
-<img class="img" src="assets/work/velvoir.jpg" alt="Velvoir website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
+<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: #141416">
+<img class="img" src="assets/work/velvoir.webp" alt="Velvoir website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
 <span class="tag" style="position: absolute; left: 18px; bottom: 18px; display: flex; align-items: center; background: #F2F1EE; color: #0B0B0C; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 500">View live site<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: 6px"><path d="M6 18 L18 6 M9 6 H18 V15" fill="none" stroke="currentColor" stroke-width="2.4"></path></svg></span>
 </div>
 <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start">
@@ -203,8 +208,8 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </div>
 </a>
 <a class="card" href="https://desirable-diplodocus-818077.framer.app/" target="_blank" rel="noopener" data-cat="BRAND" style="display: flex; flex-direction: column; gap: 18px; animation-delay: 0.16s">
-<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 5 / 4; background: #141416">
-<img class="img" src="assets/work/catedra.jpg" alt="Catedra website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
+<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: #141416">
+<img class="img" src="assets/work/catedra.webp" alt="Catedra website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
 <span class="tag" style="position: absolute; left: 18px; bottom: 18px; display: flex; align-items: center; background: #F2F1EE; color: #0B0B0C; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 500">View live site<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: 6px"><path d="M6 18 L18 6 M9 6 H18 V15" fill="none" stroke="currentColor" stroke-width="2.4"></path></svg></span>
 </div>
 <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start">
@@ -213,8 +218,8 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </div>
 </a>
 <a class="card" href="https://lithium-template.framer.website/" target="_blank" rel="noopener" data-cat="SAAS" style="display: flex; flex-direction: column; gap: 18px; animation-delay: 0.24s">
-<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 5 / 4; background: #141416">
-<img class="img" src="assets/work/lithium.jpg" alt="Lithium website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
+<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: #141416">
+<img class="img" src="assets/work/lithium.webp" alt="Lithium website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
 <span class="tag" style="position: absolute; left: 18px; bottom: 18px; display: flex; align-items: center; background: #F2F1EE; color: #0B0B0C; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 500">View live site<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: 6px"><path d="M6 18 L18 6 M9 6 H18 V15" fill="none" stroke="currentColor" stroke-width="2.4"></path></svg></span>
 </div>
 <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start">
@@ -223,8 +228,8 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </div>
 </a>
 <a class="card" href="https://kanva-template.framer.website/" target="_blank" rel="noopener" data-cat="E-COMMERCE" style="display: flex; flex-direction: column; gap: 18px; animation-delay: 0.32s">
-<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 5 / 4; background: #141416">
-<img class="img" src="assets/work/kanva.jpg" alt="Kanva website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
+<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: #141416">
+<img class="img" src="assets/work/kanva.webp" alt="Kanva website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
 <span class="tag" style="position: absolute; left: 18px; bottom: 18px; display: flex; align-items: center; background: #F2F1EE; color: #0B0B0C; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 500">View live site<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: 6px"><path d="M6 18 L18 6 M9 6 H18 V15" fill="none" stroke="currentColor" stroke-width="2.4"></path></svg></span>
 </div>
 <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start">
@@ -233,8 +238,8 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </div>
 </a>
 <a class="card" href="https://portz.framer.website/" target="_blank" rel="noopener" data-cat="BRAND" style="display: flex; flex-direction: column; gap: 18px; animation-delay: 0.40s">
-<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 5 / 4; background: #141416">
-<img class="img" src="assets/work/portz.jpg" alt="Portz website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
+<div style="position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: #141416">
+<img class="img" src="assets/work/portz.webp" alt="Portz website template homepage" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top">
 <span class="tag" style="position: absolute; left: 18px; bottom: 18px; display: flex; align-items: center; background: #F2F1EE; color: #0B0B0C; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 500">View live site<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" style="margin-left: 6px"><path d="M6 18 L18 6 M9 6 H18 V15" fill="none" stroke="currentColor" stroke-width="2.4"></path></svg></span>
 </div>
 <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start">

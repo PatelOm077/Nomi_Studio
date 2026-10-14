@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("nomiSeen"))document.documentElement.classList.add("seen");sessionStorage.setItem("nomiSeen","1")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nomi Studio — Studio</title>
 <meta name="description" content="Meet Nomi Studio — an independent web studio for ambitious brands, founded by Om Patel.">
@@ -24,8 +25,8 @@ a{color:#F2F1EE}a:hover{color:#FF4F1F}
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes unveil{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
-.curtain{position:fixed;inset:0;z-index:100;background:#F2F1EE;color:#0B0B0C;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:curtain 1.5s cubic-bezier(.76,0,.24,1) both}
-.curtain>span{animation:curtainText 1.5s cubic-bezier(.76,0,.24,1) both}
+.curtain{position:fixed;inset:0;z-index:100;background:#F2F1EE;color:#0B0B0C;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:curtain 1s cubic-bezier(.76,0,.24,1) both}
+.curtain>span{animation:curtainText 1s cubic-bezier(.76,0,.24,1) both}
 .bar{position:fixed;top:0;left:0;right:0;height:2px;background:#FF4F1F;transform-origin:left;transform:scaleX(0);z-index:60}
 @supports (animation-timeline: scroll()){.bar{animation:grow linear both;animation-timeline:scroll(root)}}
 .w{display:inline-block;animation:blurIn 1.2s cubic-bezier(.16,.84,.24,1) both}
@@ -139,10 +140,14 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 }
 @media (hover: none) and (max-width: 760px){
   header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(11,11,12,0.97)!important}
-  @supports (animation-timeline: view()){.card .img{animation:kb linear both;animation-timeline:view();animation-range:entry 0% cover 60%}}
   .grain{opacity:.05}
 }
 @media (prefers-reduced-motion: reduce){.bigname .l,.card .img{animation:none!important}}
+
+:root{--cut:.45s}
+html.seen{--cut:.92s}
+html.seen .curtain{display:none!important}
+@media (max-width: 760px){.card .tag{font-size:12px!important;padding:7px 12px!important;left:auto!important;right:10px!important;top:10px!important;bottom:auto!important;box-shadow:0 6px 20px rgba(0,0,0,.35)}}
 </style>
 </head>
 <body>
@@ -166,13 +171,13 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 </header>
 
 <section style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 64px) clamp(56px, 7vw, 100px); display: flex; flex-direction: column; gap: 40px">
-<span class="fade" style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893; animation-delay: .9s">(03) — THE STUDIO</span>
+<span class="fade" style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893; animation-delay: calc(.9s - var(--cut))">(03) — THE STUDIO</span>
 <h1 style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(56px, 9vw, 140px); line-height: 0.94; letter-spacing: -0.04em; max-width: 1200px">
-<span class="w" style="animation-delay: .95s">An</span> <span class="w" style="animation-delay: 1.03s">independent</span> <span class="w" style="animation-delay: 1.11s">studio</span> <span class="w" style="animation-delay: 1.19s">for</span> <span class="w" style="animation-delay: 1.27s; font-style: italic; color: #D6D4CF">ambitious</span> <span class="w" style="animation-delay: 1.35s">brands<span style="color: #FF4F1F">.</span></span>
+<span class="w" style="animation-delay: calc(.95s - var(--cut))">An</span> <span class="w" style="animation-delay: calc(1.03s - var(--cut))">independent</span> <span class="w" style="animation-delay: calc(1.11s - var(--cut))">studio</span> <span class="w" style="animation-delay: calc(1.19s - var(--cut))">for</span> <span class="w" style="animation-delay: calc(1.27s - var(--cut)); font-style: italic; color: #D6D4CF">ambitious</span> <span class="w" style="animation-delay: calc(1.35s - var(--cut))">brands<span style="color: #FF4F1F">.</span></span>
 </h1>
 <div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-start; justify-content: space-between">
-<p class="fade" style="margin: 0; flex: 1 1 420px; max-width: 620px; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.6; color: #B5B3AE; animation-delay: 1.5s">Nomi Studio was founded on a simple belief: a website should feel as considered as the brand behind it. We combine design, engineering and AI under one roof, so every project gets a senior team — not a template.</p>
-<svg class="spin fade" width="150" height="150" viewBox="0 0 300 300" role="img" aria-label="Nomi Studio, independent since 2026" style="animation-delay: 1.6s">
+<p class="fade" style="margin: 0; flex: 1 1 420px; max-width: 620px; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.6; color: #B5B3AE; animation-delay: calc(1.5s - var(--cut))">Nomi Studio was founded on a simple belief: a website should feel as considered as the brand behind it. We combine design, engineering and AI under one roof, so every project gets a senior team — not a template.</p>
+<svg class="spin fade" width="150" height="150" viewBox="0 0 300 300" role="img" aria-label="Nomi Studio, independent since 2026" style="animation-delay: calc(1.6s - var(--cut))">
 <defs><path id="aboutRing" d="M150,150 m-118,0 a118,118 0 1,1 236,0 a118,118 0 1,1 -236,0"></path></defs>
 <text fill="#D6D4CF" style="font-family: 'Geist Mono', monospace; font-size: 17px; letter-spacing: 6px; text-transform: uppercase"><textPath href="#aboutRing">Independent · Since 2026 · Nomi Studio ·</textPath></text>
 <circle cx="150" cy="150" r="10" fill="#FF4F1F"></circle>

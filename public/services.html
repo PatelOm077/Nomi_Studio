@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("nomiSeen"))document.documentElement.classList.add("seen");sessionStorage.setItem("nomiSeen","1")}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nomi Studio — Services</title>
 <meta name="description" content="Brand websites, e-commerce &amp; Shopify, web apps, motion, AI integrations and SEO — everything your brand needs online.">
@@ -39,8 +40,8 @@ a{color:#F2F1EE}a:hover{color:#FF4F1F}
 @keyframes cursor{0%,24%{transform:translate(300px,300px);opacity:0}30%{opacity:1}52%{transform:translate(64px,206px)}57%{transform:translate(64px,206px) scale(.82)}61%{transform:translate(64px,206px) scale(1)}86%{transform:translate(250px,60px);opacity:1}100%{transform:translate(250px,60px);opacity:0}}
 @keyframes live{0%,60%{opacity:0;transform:translateY(5px)}66%,88%{opacity:1;transform:none}100%{opacity:0}}
 @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
-.curtain{position:fixed;inset:0;z-index:100;background:#F2F1EE;color:#0B0B0C;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:curtain 1.5s cubic-bezier(.76,0,.24,1) both}
-.curtain>span{animation:curtainText 1.5s cubic-bezier(.76,0,.24,1) both}
+.curtain{position:fixed;inset:0;z-index:100;background:#F2F1EE;color:#0B0B0C;display:flex;align-items:center;justify-content:center;pointer-events:none;animation:curtain 1s cubic-bezier(.76,0,.24,1) both}
+.curtain>span{animation:curtainText 1s cubic-bezier(.76,0,.24,1) both}
 .bar{position:fixed;top:0;left:0;right:0;height:2px;background:#FF4F1F;transform-origin:left;transform:scaleX(0);z-index:60}
 @supports (animation-timeline: scroll()){.bar{animation:grow linear both;animation-timeline:scroll(root)}}
 .grain{position:fixed;left:-50%;top:-50%;width:200%;height:200%;pointer-events:none;z-index:90;opacity:.07;animation:grain 1.2s steps(5) infinite}
@@ -199,10 +200,14 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 }
 @media (hover: none) and (max-width: 760px){
   header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(11,11,12,0.97)!important}
-  @supports (animation-timeline: view()){.card .img{animation:kb linear both;animation-timeline:view();animation-range:entry 0% cover 60%}}
   .grain{opacity:.05}
 }
 @media (prefers-reduced-motion: reduce){.bigname .l,.card .img{animation:none!important}}
+
+:root{--cut:.45s}
+html.seen{--cut:.92s}
+html.seen .curtain{display:none!important}
+@media (max-width: 760px){.card .tag{font-size:12px!important;padding:7px 12px!important;left:auto!important;right:10px!important;top:10px!important;bottom:auto!important;box-shadow:0 6px 20px rgba(0,0,0,.35)}}
 </style>
 </head>
 <body>
@@ -227,17 +232,17 @@ body.menu-open .mlinks a:nth-child(1){transition-delay:.25s}body.menu-open .mlin
 
 <section style="max-width: 1312px; margin: 0 auto; padding: clamp(64px, 9vw, 120px) clamp(20px, 5vw, 64px) clamp(56px, 7vw, 96px); display: flex; flex-wrap: wrap; gap: 56px; align-items: center; justify-content: space-between">
 <div style="flex: 999 1 560px; display: flex; flex-direction: column; gap: 34px">
-<span class="fade" style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893; animation-delay: .9s">(01) — SERVICES</span>
+<span class="fade" style="font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #9A9893; animation-delay: calc(.9s - var(--cut))">(01) — SERVICES</span>
 <h1 style="margin: 0; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(56px, 8vw, 124px); line-height: 0.94; letter-spacing: -0.04em">
-<span class="w" style="animation-delay: .95s">Everything</span> <span class="w" style="animation-delay: 1.05s">your</span> <span class="w" style="animation-delay: 1.15s">brand</span><br><span class="w" style="animation-delay: 1.25s">needs</span> <span class="w" style="animation-delay: 1.35s; font-style: italic; color: #D6D4CF">online</span><span class="w" style="animation-delay: 1.45s; color: #FF4F1F">.</span>
+<span class="w" style="animation-delay: calc(.95s - var(--cut))">Everything</span> <span class="w" style="animation-delay: calc(1.05s - var(--cut))">your</span> <span class="w" style="animation-delay: calc(1.15s - var(--cut))">brand</span><br><span class="w" style="animation-delay: calc(1.25s - var(--cut))">needs</span> <span class="w" style="animation-delay: calc(1.35s - var(--cut)); font-style: italic; color: #D6D4CF">online</span><span class="w" style="animation-delay: calc(1.45s - var(--cut)); color: #FF4F1F">.</span>
 </h1>
-<p class="fade" style="margin: 0; max-width: 520px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #B5B3AE; animation-delay: 1.55s">From a sharp one-page launch to a full e-commerce platform — one studio, one standard of craft, blank page to live site.</p>
-<div class="fade ctaRow" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; animation-delay: 1.65s">
+<p class="fade" style="margin: 0; max-width: 520px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: #B5B3AE; animation-delay: calc(1.55s - var(--cut))">From a sharp one-page launch to a full e-commerce platform — one studio, one standard of craft, blank page to live site.</p>
+<div class="fade ctaRow" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; animation-delay: calc(1.65s - var(--cut))">
 <a class="btn" href="contact.html">Get a proposal<span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="currentColor" stroke-width="2"></path></svg></span></a>
 <a class="ghost" href="#plans">See packages</a>
 </div>
 </div>
-<div class="fade" style="flex: 1 1 380px; display: flex; justify-content: center; animation-delay: 1.7s">
+<div class="fade" style="flex: 1 1 380px; display: flex; justify-content: center; animation-delay: calc(1.7s - var(--cut))">
 <div class="hv" style="position: relative; width: 400px; height: 400px; display: flex; align-items: center; justify-content: center; background-image: radial-gradient(#2A2A2C 1px, transparent 1px); background-size: 18px 18px; border-radius: 24px">
 <svg class="spin" width="400" height="400" viewBox="0 0 400 400" aria-hidden="true" style="position: absolute; inset: 0"><circle cx="200" cy="200" r="190" fill="none" stroke="#2A2A2C" stroke-width="1" stroke-dasharray="3 9"></circle><circle cx="200" cy="10" r="5" fill="#FF4F1F"></circle></svg>
 <div class="float" role="img" aria-label="A website building itself and going live" style="width: 340px; height: 330px; box-sizing: border-box; border: 1px solid #3A3A3D; border-radius: 16px; background: #141416; position: relative; overflow: hidden; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.9)">
